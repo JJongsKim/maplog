@@ -1,13 +1,22 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../styles/theme';
 
 import '../styles/globalStyle.css';
 
+import Main from './main';
+import SignIn from './sign-in';
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <h1>웰컴체로 잘 나오고 있나 ?</h1>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/sign-in" element={<SignIn />} />
+        </Routes>
+      </Router>
     </ThemeProvider>
   );
 }
