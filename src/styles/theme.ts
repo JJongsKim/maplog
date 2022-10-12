@@ -8,7 +8,8 @@ export const theme: DefaultTheme = {
       gray: '#cecece',
       pink: '#fff1f0',
       hotpink: '#ff6f61',
-      error: '#FF7C9C',
+      babypink: '#ffeeec',
+      error: '#ff7c9c',
     },
   },
 };
