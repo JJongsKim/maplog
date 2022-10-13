@@ -1,0 +1,10 @@
+<svg width="100" height="81" viewBox="0 0 100 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-outside-1_17_388" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="81" fill="black">
+<rect fill="white" width="100" height="81"/>
+<path d="M0 10C0 4.47715 4.47715 0 10 0H90C95.5228 0 100 4.47715 100 10V70C100 75.5228 95.5228 80 90 80H10C4.47716 80 0 75.5228 0 70V10Z"/>
+</mask>
+<path d="M0 10C0 4.47715 4.47715 0 10 0H90C95.5228 0 100 4.47715 100 10V70C100 75.5228 95.5228 80 90 80H10C4.47716 80 0 75.5228 0 70V10Z" fill="#FFDEDB"/>
+<path d="M0 0H100H0ZM100 70C100 76.0751 95.0751 81 89 81H11C4.92487 81 0 76.0751 0 70C0 74.9706 4.47715 79 10 79H90C95.5228 79 100 74.9706 100 70ZM0 80V0V80ZM100 0V80V0Z" fill="#762E27" mask="url(#path-1-outside-1_17_388)"/>
+<line x1="7.5" y1="-7.5" x2="40.6908" y2="-7.5" transform="matrix(-0.855375 -0.518009 0.482205 -0.876059 90 45.9633)" stroke="#762E27" stroke-width="15" stroke-linecap="round"/>
+<line x1="7.5" y1="-7.5" x2="40.6908" y2="-7.5" transform="matrix(-0.855375 0.518009 -0.482205 -0.876059 51.2212 21.0367)" stroke="#762E27" stroke-width="15" stroke-linecap="round"/>
+</svg>
