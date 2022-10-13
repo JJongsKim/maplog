@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ReactComponent as DownArrow } from '../../assets/DownArrow.svg';
+
 const MainFirst = () => {
   return (
     <MainWrap>
@@ -14,11 +16,13 @@ const MainFirst = () => {
         <p>🥳</p>
         <p>📚</p>
       </MainEmoji>
+      <DownArrowStyle />
     </MainWrap>
   );
 };
 
 const MainWrap = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   width: 1512px;
@@ -76,6 +80,13 @@ const MainEmoji = styled.div`
       }
     }
   }
+`;
+
+const DownArrowStyle = styled(DownArrow)`
+  position: absolute;
+  left: 698px;
+  bottom: 30px;
+  cursor: pointer;
 `;
 
 export default MainFirst;
