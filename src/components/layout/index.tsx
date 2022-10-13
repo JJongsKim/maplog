@@ -16,10 +16,9 @@ const Layout = ({ children }: LayoutProps) => {
 };
 
 const LayoutWrap = styled.div`
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: center; */
 `;
 
 export default Layout;
