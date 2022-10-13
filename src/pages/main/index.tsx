@@ -1,19 +1,16 @@
-import styled from 'styled-components';
-
 import Layout from '../../components/layout';
+import MainFirst from '../../components/mainPage/mainFirst';
+import MainSecond from '../../components/mainPage/mainSecond';
+import MainThird from '../../components/mainPage/mainThird';
 
 const Main = () => {
   return (
     <Layout>
-      <MainWrap />
+      <MainFirst />
+      <MainSecond />
+      <MainThird />
     </Layout>
   );
 };
-
-const MainWrap = styled.div`
-  width: 1512px;
-  height: 982px;
-  background-color: ${({ theme }) => theme.colors.primary.babypink};
-`;
 
 export default Main;
