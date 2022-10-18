@@ -6,7 +6,7 @@ export const theme: DefaultTheme = {
     primary: {
       black: '#2e2e2e',
       gray: '#cecece',
-      pink: '#fff1f0',
+      pink: '#ffdedb',
       hotpink: '#ff6f61',
       babypink: '#ffeeec',
       error: '#ff7c9c',
