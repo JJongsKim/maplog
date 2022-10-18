@@ -1,16 +1,21 @@
 import styled from 'styled-components';
 
-const SignIn = () => {
+import { ReactComponent as Polygon } from '../../assets/Polygon.svg';
+
+const SignUp = () => {
   return (
     <BgWrap>
-      <SignInWrap>
-        <SignInBorder />
-        <SignInTitle>MapLog</SignInTitle>
+      <SignUpWrap>
+        <SignUpBorder />
+        <GoSignInBtn>
+          <PolygonStyle />
+          <p>로그인으로 돌아가기</p>
+        </GoSignInBtn>
         <TapeWrap>
           <IndexTape />
           <IndexTape />
         </TapeWrap>
-      </SignInWrap>
+      </SignUpWrap>
     </BgWrap>
   );
 };
@@ -24,11 +29,10 @@ const BgWrap = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.pink};
 `;
 
-const SignInWrap = styled.div`
+const SignUpWrap = styled.div`
   display: grid;
   grid-template-columns: 36px 734px;
   position: relative;
-  justify-content: center;
   width: 770px;
   height: 750px;
   border-radius: 30px 10px 10px 30px;
@@ -36,15 +40,20 @@ const SignInWrap = styled.div`
   background-color: #fff;
 `;
 
-const SignInBorder = styled.div`
+const SignUpBorder = styled.div`
   border-right: 1px solid ${({ theme }) => theme.colors.primary.gray};
 `;
 
-const SignInTitle = styled.p`
-  margin-left: 245px;
-  font-weight: 600;
-  font-size: 60px;
-  color: ${({ theme }) => theme.colors.primary.hotpink};
+const PolygonStyle = styled(Polygon)``;
+
+const GoSignInBtn = styled.div`
+  display: flex;
+  /* align-items: center; */
+
+  p {
+    font-size: 22px;
+    color: ${({ theme }) => theme.colors.text};
+  }
 `;
 
 const TapeWrap = styled.div`
@@ -68,4 +77,4 @@ const IndexTape = styled.div`
   }
 `;
 
-export default SignIn;
+export default SignUp;
