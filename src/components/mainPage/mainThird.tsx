@@ -1,13 +1,20 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as UpArrow } from '../../assets/UpArrow.svg';
 
 const MainThird = () => {
+  const navigate = useNavigate();
+
+  const goSignUp = () => {
+    navigate('/sign-up');
+  };
+
   return (
     <MainWrap>
       <MainContainer>
         <ContentBox>함께하러 갈래요?</ContentBox>
-        <GoSignUpBtn>맵로그 가입하러 가기</GoSignUpBtn>
+        <GoSignUpBtn onClick={goSignUp}>맵로그 가입하러 가기</GoSignUpBtn>
       </MainContainer>
       <UpArrowStyle />
     </MainWrap>
