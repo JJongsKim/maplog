@@ -1,11 +1,21 @@
 import styled from 'styled-components';
 
+import FormContainer from '../../components/signIn/formContainer';
+
+// type InitialValues = {
+//   email: string;
+//   password: string;
+// };
+
 const SignIn = () => {
   return (
     <BgWrap>
       <SignInWrap>
         <SignInBorder />
-        <SignInTitle>MapLog</SignInTitle>
+        <TitleInput>
+          <SignInTitle>MapLog</SignInTitle>
+          <FormContainer />
+        </TitleInput>
         <TapeWrap>
           <IndexTape />
           <IndexTape />
@@ -46,6 +56,8 @@ const SignInTitle = styled.p`
   font-size: 60px;
   color: ${({ theme }) => theme.colors.primary.hotpink};
 `;
+
+const TitleInput = styled.div``;
 
 const TapeWrap = styled.div`
   display: flex;
