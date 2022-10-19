@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import FormContainer from '../../components/signIn/formContainer';
 
@@ -8,12 +9,18 @@ import FormContainer from '../../components/signIn/formContainer';
 // };
 
 const SignIn = () => {
+  const navigate = useNavigate();
+
+  const goMain = () => {
+    navigate('/');
+  };
+
   return (
     <BgWrap>
       <SignInWrap>
         <SignInBorder />
         <TitleInput>
-          <SignInTitle>MapLog</SignInTitle>
+          <SignInTitle onClick={goMain}>MapLog</SignInTitle>
           <FormContainer />
         </TitleInput>
         <TapeWrap>
@@ -55,6 +62,7 @@ const SignInTitle = styled.p`
   font-weight: 600;
   font-size: 60px;
   color: ${({ theme }) => theme.colors.primary.hotpink};
+  cursor: pointer;
 `;
 
 const TitleInput = styled.div``;
