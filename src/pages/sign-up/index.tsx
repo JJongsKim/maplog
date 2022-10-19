@@ -1,13 +1,20 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as Polygon } from '../../assets/Polygon.svg';
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
+  const goSignIn = () => {
+    navigate('/sign-in');
+  };
+
   return (
     <BgWrap>
       <SignUpWrap>
         <SignUpBorder />
-        <GoSignInBtn>
+        <GoSignInBtn onClick={goSignIn}>
           <PolygonStyle />
           <p>로그인으로 돌아가기</p>
         </GoSignInBtn>
@@ -48,9 +55,14 @@ const PolygonStyle = styled(Polygon)``;
 
 const GoSignInBtn = styled.div`
   display: flex;
-  /* align-items: center; */
+  align-items: center;
+  width: 205px;
+  height: 40px;
+  margin: 20px 0 0 25px;
+  cursor: pointer;
 
   p {
+    margin-left: 5px;
     font-size: 22px;
     color: ${({ theme }) => theme.colors.text};
   }
