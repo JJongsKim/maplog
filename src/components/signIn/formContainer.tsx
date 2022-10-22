@@ -57,7 +57,9 @@ const InputWrap = styled.input`
   height: 65px;
   border: 1px solid ${({ theme }) => theme.colors.primary.gray};
   border-radius: 10px;
+  padding: 0 20px 0 20px;
   font-size: 25px;
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const GoSignUpBtn = styled.button`

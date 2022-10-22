@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as Polygon } from '../../assets/Polygon.svg';
+import FormContainer from '../../components/signUp/formContainer';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -14,10 +15,13 @@ const SignUp = () => {
     <BgWrap>
       <SignUpWrap>
         <SignUpBorder />
-        <GoSignInBtn onClick={goSignIn}>
-          <PolygonStyle />
-          <p>로그인으로 돌아가기</p>
-        </GoSignInBtn>
+        <GoSignInInput>
+          <GoSignInBtn onClick={goSignIn}>
+            <PolygonStyle />
+            <p>로그인으로 돌아가기</p>
+          </GoSignInBtn>
+          <FormContainer />
+        </GoSignInInput>
         <TapeWrap>
           <IndexTape />
           <IndexTape />
@@ -66,6 +70,11 @@ const GoSignInBtn = styled.div`
     font-size: 22px;
     color: ${({ theme }) => theme.colors.text};
   }
+`;
+
+const GoSignInInput = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const TapeWrap = styled.div`
