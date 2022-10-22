@@ -1,12 +1,23 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const goSignIn = () => {
+    navigate('/sign-in');
+  };
+
+  const goSignUp = () => {
+    navigate('/sign-up');
+  };
+
   return (
     <HeaderWrap>
       <HeaderMark>🗺 MapLog</HeaderMark>
       <HeaderMenu>
-        <li>로그인</li>
-        <li>회원가입</li>
+        <MenuBtn onClick={goSignIn}>로그인</MenuBtn>
+        <MenuBtn onClick={goSignUp}>회원가입</MenuBtn>
       </HeaderMenu>
     </HeaderWrap>
   );
@@ -37,15 +48,16 @@ const HeaderMark = styled.div`
 
 const HeaderMenu = styled.ul`
   display: flex;
-  list-style: none;
-  font-size: 30px;
+`;
 
-  li {
-    &:nth-child(1) {
-      margin-right: 105px;
-    }
-    color: ${({ theme }) => theme.colors.primary.hotpink};
-    cursor: pointer;
+const MenuBtn = styled.button`
+  font-size: 30px;
+  color: ${({ theme }) => theme.colors.primary.hotpink};
+  padding: 0;
+  cursor: pointer;
+
+  &:nth-child(1) {
+    margin-right: 105px;
   }
 `;
 

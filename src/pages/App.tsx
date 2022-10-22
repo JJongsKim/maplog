@@ -7,6 +7,7 @@ import '../styles/globalStyle.css';
 
 import Main from './main';
 import SignIn from './sign-in';
+import SignUp from './sign-up';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
       </Router>
     </ThemeProvider>

@@ -1,33 +1,32 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-import FormContainer from '../../components/signIn/formContainer';
+import { ReactComponent as Polygon } from '../../assets/Polygon.svg';
+import FormContainer from '../../components/signUp/formContainer';
 
-// type InitialValues = {
-//   email: string;
-//   password: string;
-// };
-
-const SignIn = () => {
+const SignUp = () => {
   const navigate = useNavigate();
 
-  const goMain = () => {
-    navigate('/');
+  const goSignIn = () => {
+    navigate('/sign-in');
   };
 
   return (
     <BgWrap>
-      <SignInWrap>
-        <SignInBorder />
-        <TitleInput>
-          <SignInTitle onClick={goMain}>MapLog</SignInTitle>
+      <SignUpWrap>
+        <SignUpBorder />
+        <GoSignInInput>
+          <GoSignInBtn onClick={goSignIn}>
+            <PolygonStyle />
+            <p>로그인으로 돌아가기</p>
+          </GoSignInBtn>
           <FormContainer />
-        </TitleInput>
+        </GoSignInInput>
         <TapeWrap>
           <IndexTape />
           <IndexTape />
         </TapeWrap>
-      </SignInWrap>
+      </SignUpWrap>
     </BgWrap>
   );
 };
@@ -41,11 +40,10 @@ const BgWrap = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.pink};
 `;
 
-const SignInWrap = styled.div`
+const SignUpWrap = styled.div`
   display: grid;
   grid-template-columns: 36px 734px;
   position: relative;
-  justify-content: center;
   width: 770px;
   height: 750px;
   border-radius: 30px 10px 10px 30px;
@@ -53,19 +51,31 @@ const SignInWrap = styled.div`
   background-color: #fff;
 `;
 
-const SignInBorder = styled.div`
+const SignUpBorder = styled.div`
   border-right: 1px solid ${({ theme }) => theme.colors.primary.gray};
 `;
 
-const SignInTitle = styled.p`
-  margin-left: 245px;
-  font-weight: 600;
-  font-size: 60px;
-  color: ${({ theme }) => theme.colors.primary.hotpink};
+const PolygonStyle = styled(Polygon)``;
+
+const GoSignInBtn = styled.div`
+  display: flex;
+  align-items: center;
+  width: 205px;
+  height: 40px;
+  margin: 20px 0 0 25px;
   cursor: pointer;
+
+  p {
+    margin-left: 5px;
+    font-size: 22px;
+    color: ${({ theme }) => theme.colors.text};
+  }
 `;
 
-const TitleInput = styled.div``;
+const GoSignInInput = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const TapeWrap = styled.div`
   display: flex;
@@ -88,4 +98,4 @@ const IndexTape = styled.div`
   }
 `;
 
-export default SignIn;
+export default SignUp;
