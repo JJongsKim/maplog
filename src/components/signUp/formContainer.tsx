@@ -6,20 +6,20 @@ const FormContainer = () => {
       <FormWrap>
         <InputContainer>
           <LabelWrap>이름</LabelWrap>
-          <InputWrap />
+          <InputWrap id="userName" placeholder="홍길동" />
         </InputContainer>
         <InputContainer>
           <LabelWrap>아이디</LabelWrap>
-          <InputWrap />
+          <InputWrap id="userId" placeholder="hong123" />
         </InputContainer>
         <InputContainer>
           <LabelWrap>비밀번호</LabelWrap>
-          <InputWrap />
+          <InputWrap id="password" placeholder="hongpw12345!" />
         </InputContainer>
         <CertifyWrap>
           <InputContainer>
             <LabelWrap>이메일</LabelWrap>
-            <InputWrap />
+            <InputWrap id="userEmail" placeholder="hong123@naver.com" />
           </InputContainer>
           <CertifyBtn>인증번호 전송</CertifyBtn>
         </CertifyWrap>
@@ -63,6 +63,10 @@ const InputWrap = styled.input`
   padding: 0 20px 0 20px;
   font-size: 20px;
   color: ${({ theme }) => theme.colors.text};
+
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.primary.gray};
+  }
 `;
 
 const CertifyWrap = styled.div`
