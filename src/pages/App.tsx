@@ -6,6 +6,7 @@ import { theme } from '../styles/theme';
 import '../styles/globalStyle.css';
 
 import Main from './main';
+import MaplogMain from './maplog-main';
 import SignIn from './sign-in';
 import SignUp from './sign-up';
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/maplog-main" element={<MaplogMain />} />
         </Routes>
       </Router>
     </ThemeProvider>
