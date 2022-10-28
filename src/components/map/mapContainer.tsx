@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import SearchContainer from './searchContainer';
 
@@ -13,6 +13,8 @@ declare global {
 }
 
 const MapContainer = () => {
+  const [recentMap, setRecentMap] = useState();
+
   useEffect(() => {
     // 지도 나타내기
     const container = document.getElementById('map');
@@ -21,6 +23,7 @@ const MapContainer = () => {
       level: 2,
     };
     const map = new kakao.maps.Map(container, options);
+    setRecentMap(map);
   }, []);
 
   return (
