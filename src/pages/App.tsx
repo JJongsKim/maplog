@@ -7,6 +7,7 @@ import '../styles/globalStyle.css';
 
 import Main from './main';
 import MaplogMain from './maplog-main';
+import ModalTest from './modalTest';
 import SignIn from './sign-in';
 import SignUp from './sign-up';
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/maplog-main" element={<MaplogMain />} />
+          <Route path="/modal-test" element={<ModalTest />} />
         </Routes>
       </Router>
     </ThemeProvider>
