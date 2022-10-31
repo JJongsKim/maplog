@@ -1,12 +1,19 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-const Modal = () => {
+type childrenType = {
+  children: ReactNode;
+};
+
+const Modal = ({ children }: childrenType) => {
   return (
     <ModalView>
       <ModalBg>
         <ModalContainer>
-          <ModalContent>모달창 테스트</ModalContent>
-          <ModalCloseBtn>닫기</ModalCloseBtn>
+          <ModalHeader>
+            <p>📝</p>
+          </ModalHeader>
+          <ModalContent>{children}</ModalContent>
         </ModalContainer>
       </ModalBg>
     </ModalView>
@@ -34,21 +41,25 @@ const ModalBg = styled.div`
 const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 500px;
+  width: 740px;
+  height: 680px;
+  border-radius: 10px;
   background-color: #fff;
 `;
 
-const ModalContent = styled.p`
-  text-align: center;
-  font-size: 20px;
+const ModalHeader = styled.div`
+  width: 100%;
+  height: 100px;
+  background-color: orange;
+
+  p {
+    margin: 20px 0 0 50px;
+    padding: 0;
+    font-size: 55px;
+  }
 `;
 
-const ModalCloseBtn = styled.button`
-  width: 100px;
-  height: 30px;
-`;
+const ModalContent = styled.p``;
 
 export default Modal;
