@@ -16,6 +16,7 @@ const WritingLog = () => {
 const MapWrap = styled.div`
   width: 1512px;
   height: 982px;
+  overflow: hidden;
 `;
 
 export default WritingLog;

@@ -83,21 +83,21 @@ const MapContainer = () => {
         bounds.extend(placePosition);
 
         // eslint-disable-next-line no-loop-func
-        (function (marker, title) {
+        (function (marker, placeTitle) {
           kakao.maps.event.addListener(marker, 'mouseover', function () {
-            displayInfowindow(marker, places[i].place_name);
+            displayInfowindow(marker, placeTitle);
           });
           kakao.maps.event.addListener(marker, 'mouseout', function () {
             infowindow.close();
           });
 
           itemEl.onmouseover = function () {
-            displayInfowindow(marker, places[i].place_name);
+            displayInfowindow(marker, placeTitle);
           };
           itemEl.onmouseout = function () {
             infowindow.close();
           };
-        })(marker, places[i].placeName);
+        })(marker, places[i].place_name);
 
         fragment.appendChild(itemEl);
       }
@@ -110,29 +110,29 @@ const MapContainer = () => {
       const el = document.createElement('li');
       const itemStr = `
           <div class="info">
-            <span class="marker marker_${index + 1}">
-              ${index + 1}
-            </span>
-            <a href="${places.place_url}">
-              <h5 class="info-item place-name">${places.place_name}</h5>
-              ${
-                places.road_address_name
-                  ? `<span class="info-item road-address-name">
-                    ${places.road_address_name}
-                   </span>
-                   <span class="info-item address-name">
-                 	 ${places.address_name}
-               	   </span>`
-                  : `<span class="info-item address-name">
-             	     ${places.address_name}
+          <span class="marker marker_${index + 1}">
+            ${index + 1}
+          </span>
+          <a href="${places.place_url}">
+            <h5 class="info-item place-name">${places.place_name}</h5>
+            ${
+              places.road_address_name
+                ? `<span class="info-item road-address-name">
+                  ${places.road_address_name}
+                </span>
+                <span class="info-item address-name">
+                  ${places.address_name}
                   </span>`
-              }
-              <span class="info-item tel">
-                ${places.phone}
-              </span>
-            </a>
-          </div>
-          `;
+                : `<span class="info-item address-name">
+                  ${places.address_name}
+                </span>`
+            }
+            <span class="info-item tel">
+              ${places.phone}
+            </span>
+          </a>
+        </div>
+      `;
 
       el.innerHTML = itemStr;
       el.className = 'item';
@@ -253,8 +253,8 @@ const SearchBtn = styled.button`
   cursor: pointer;
 `;
 
-const SearchList = styled.div`
-  height: 93%;
+const SearchList = styled.ul`
+  height: 90%;
   overflow: scroll;
 `;
 
