@@ -107,13 +107,16 @@ const MapContainer = () => {
     }
 
     function getListItem(index: number, places: placeType) {
+      // console.log(placeInfo);
       const el = document.createElement('li');
       const itemStr = `
-          <div class="info">
-          <span class="marker marker_${index + 1}">
+        <div class="info">
+          <span class="marker marker_${
+            index + 1
+          }" style="background-image: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png')">
             ${index + 1}
           </span>
-          <a href="${places.place_url}">
+          <div>
             <h5 class="info-item place-name">${places.place_name}</h5>
             ${
               places.road_address_name
@@ -130,7 +133,7 @@ const MapContainer = () => {
             <span class="info-item tel">
               ${places.phone}
             </span>
-          </a>
+          </div>
         </div>
       `;
 
@@ -198,6 +201,7 @@ const MapContainer = () => {
             </form>
           </SearchNavBar>
           <SearchList id="placesList" />
+          <Pagination>페이지 목록 들어갈 자리</Pagination>
         </SearchModal>
       </SearchWrap>
     </MapWrap>
@@ -221,7 +225,7 @@ const SearchWrap = styled.div`
 
 const SearchModal = styled.div`
   width: 450px;
-  height: 75%;
+  height: 740px;
   border: 1px solid ${({ theme }) => theme.colors.primary.gray};
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -254,8 +258,14 @@ const SearchBtn = styled.button`
 `;
 
 const SearchList = styled.ul`
-  height: 90%;
+  margin: 0;
+  height: 650px;
   overflow: scroll;
+`;
+
+const Pagination = styled.div`
+  height: 40px;
+  background-color: orange;
 `;
 
 export default MapContainer;
