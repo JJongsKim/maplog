@@ -1,18 +1,10 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
-type placeType = {
-  place_name: string;
-  road_address_name: string;
-  address_name: string;
-  phone: string;
-  place_url: string;
-};
-
 const MapContainer = () => {
   const [value, setValue] = useState<string>('');
   const [keyword, setKeyword] = useState<string>('');
-  const [recentMap, setRecentMap] = useState<any>();
+  const [placeInfo, setPlaceInfo] = useState<any[]>([]);
 
   const handleKeyword = (e: { preventDefault: () => void; target: { value: string } }) => {
     e.preventDefault();
@@ -55,6 +47,8 @@ const MapContainer = () => {
     function placesSearchCB(data: any, status: number) {
       if (status === kakao.maps.services.Status.OK) {
         displayPlaces(data);
+        setPlaceInfo(data);
+        console.log(data);
       } else if (status === kakao.maps.services.Status.ERROR) {
         // eslint-disable-next-line no-alert
         alert('검색 결과 중 오류가 발생했습니다!');
@@ -67,14 +61,11 @@ const MapContainer = () => {
       const fragment = document.createDocumentFragment();
       const bounds = new kakao.maps.LatLngBounds();
 
-      if (listEl) removeAllChildNods(listEl);
-
       removeMarker();
 
       for (let i = 0; i < places.length; i += 1) {
         const placePosition = new kakao.maps.LatLng(places[i].y, places[i].x);
         const marker = addMarker(placePosition, i);
-        const itemEl = getListItem(i, places[i]);
 
         bounds.extend(placePosition);
 
@@ -86,57 +77,11 @@ const MapContainer = () => {
           kakao.maps.event.addListener(marker, 'mouseout', function () {
             infowindow.close();
           });
-
-          itemEl.onmouseover = function () {
-            displayInfowindow(marker, placeTitle);
-          };
-          itemEl.onmouseout = function () {
-            infowindow.close();
-          };
         })(marker, places[i].place_name);
-
-        fragment.appendChild(itemEl);
       }
 
       if (listEl) listEl.appendChild(fragment);
       map.setBounds(bounds);
-    }
-
-    function getListItem(index: number, places: placeType) {
-      // console.log(placeInfo);
-      const el = document.createElement('li');
-      const itemStr = `
-        <div class="info">
-          <span class="marker marker_${
-            index + 1
-          }" style="background-image: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png')">
-            ${index + 1}
-          </span>
-          <div>
-            <h5 class="info-item place-name">${places.place_name}</h5>
-            ${
-              places.road_address_name
-                ? `<span class="info-item road-address-name">
-                  ${places.road_address_name}
-                </span>
-                <span class="info-item address-name">
-                  ${places.address_name}
-                  </span>`
-                : `<span class="info-item address-name">
-                  ${places.address_name}
-                </span>`
-            }
-            <span class="info-item tel">
-              ${places.phone}
-            </span>
-          </div>
-        </div>
-      `;
-
-      el.innerHTML = itemStr;
-      el.className = 'item';
-
-      return el;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -163,10 +108,10 @@ const MapContainer = () => {
 
     // 인포윈도우로 장소명 표시하기
     function displayInfowindow(marker: any, title: string) {
-      const content = `<div style="padding:5px;z-index:1;" class="marker-title">${title}</div>`;
+      const content = `<div style="padding:3px;z-index:1;font-size:12px;" class="marker-title">${title}</div>`;
 
       infowindow.setContent(content);
-      infowindow.open(recentMap, marker);
+      infowindow.open(map, marker);
     }
 
     // 지도 위 마커 삭제
@@ -175,12 +120,6 @@ const MapContainer = () => {
         markers[i].setMap(null);
       }
       markers = [];
-    }
-
-    function removeAllChildNods(el: HTMLElement) {
-      while (el.hasChildNodes()) {
-        if (el.lastChild) el.removeChild(el.lastChild);
-      }
     }
   }, [keyword]);
 
@@ -196,8 +135,21 @@ const MapContainer = () => {
               </SearchBtn>
             </form>
           </SearchNavBar>
-          <SearchList id="placesList" />
-          <Pagination>페이지 목록 들어갈 자리</Pagination>
+          <SearchList id="placesList">
+            {placeInfo.map(place => (
+              <li key={place.id}>
+                <InfoContainer>
+                  <InfoMarker>☀️</InfoMarker>
+                  <InfoContent>
+                    <PlaceTitle>{place.place_name}</PlaceTitle>
+                    <PlaceRoadAddress>{place.road_address_name}</PlaceRoadAddress>
+                    <PlaceAddress>{place.address_name}</PlaceAddress>
+                  </InfoContent>
+                </InfoContainer>
+              </li>
+            ))}
+          </SearchList>
+          <Pagination>페이지 목록 준비중....</Pagination>
         </SearchModal>
       </SearchWrap>
     </MapWrap>
@@ -221,7 +173,7 @@ const SearchWrap = styled.div`
 
 const SearchModal = styled.div`
   width: 450px;
-  height: 740px;
+  height: 75%;
   border: 1px solid ${({ theme }) => theme.colors.primary.gray};
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -255,13 +207,59 @@ const SearchBtn = styled.button`
 
 const SearchList = styled.ul`
   margin: 0;
-  height: 650px;
+  padding: 0;
+  height: 86%;
+  list-style: none;
   overflow: scroll;
+
+  li {
+    border: 1px solid #ededed;
+  }
+`;
+
+const InfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const InfoMarker = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin-left: 15px;
+  font-size: 25px;
+`;
+
+const InfoContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  padding-left: 30px;
+`;
+
+const PlaceTitle = styled.h3`
+  margin: 0 0 5px 0;
+`;
+
+const PlaceRoadAddress = styled.p`
+  margin: 0;
+  padding: 0;
+`;
+
+const PlaceAddress = styled.div`
+  margin: 0;
+  padding: 0;
+  color: #555;
 `;
 
 const Pagination = styled.div`
-  height: 40px;
-  background-color: orange;
+  height: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default MapContainer;
