@@ -1,8 +1,14 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 import Layout from '../../components/layout';
 
 const MaplogMain = () => {
+  const navigate = useNavigate();
+  const goWritingLog = () => {
+    navigate('/writing-log');
+  };
+
   return (
     <Layout>
       <MainWrap>
@@ -23,7 +29,7 @@ const MaplogMain = () => {
             </MenuSet>
             <MenuSet>
               <MenuImage>📝</MenuImage>
-              <MenuBtn>로그 작성하기</MenuBtn>
+              <MenuBtn onClick={goWritingLog}>로그 작성하기</MenuBtn>
             </MenuSet>
           </MenuContainer>
         </ContentContainer>

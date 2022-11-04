@@ -9,6 +9,16 @@ import Main from './main';
 import MaplogMain from './maplog-main';
 import SignIn from './sign-in';
 import SignUp from './sign-up';
+import WritingLog from './writing-log';
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    kakao: any;
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const kakao: any;
+}
 
 function App() {
   return (
@@ -19,6 +29,7 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/maplog-main" element={<MaplogMain />} />
+          <Route path="/writing-log" element={<WritingLog />} />
         </Routes>
       </Router>
     </ThemeProvider>
