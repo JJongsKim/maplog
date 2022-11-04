@@ -11,6 +11,15 @@ import SignIn from './sign-in';
 import SignUp from './sign-up';
 import WritingLog from './writing-log';
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    kakao: any;
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const kakao: any;
+}
+
 function App() {
   return (
     <ThemeProvider theme={theme}>

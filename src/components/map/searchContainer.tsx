@@ -1,43 +1,19 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 
 const SearchContainer = () => {
-  const [search, setSearch] = useState<string>('');
-  // const ps = new kakao.maps.services.Places();
-
-  // const placeSearchCB = (data, status, pagination) => {
-  //   if (status === kakao.maps.services.Status.OK) {
-  //     const bounds = new kakao.maps.LatLngBounds();
-  //     for (let i = 0; i < data.length; i += 1) {
-  //       displayMarker(data[i]);
-  //       bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-  //     }
-  //     map.setBounds(bounds)
-  //   }
-  // }
-
-  const onChangeSearch = (e: any) => {
-    setSearch(e.target.value);
-  };
-
-  // const searchForm = document.getElementById('submitBtn');
-  // searchForm?.addEventListener('click', function (e) {
-  //   e.preventDefault();
-  // });
-
   return (
     <SearchWrap>
       <SearchModal>
         <SearchNavBar>
           <form>
-            <SearchInput value={search} onChange={onChangeSearch} />
+            <SearchInput />
             <SearchBtn id="submitBtn" type="submit">
               검색하기
             </SearchBtn>
           </form>
         </SearchNavBar>
         <SearchList>검색한 장소들이 들어갈 위치</SearchList>
-        <SearchPageList>페이지네이션 공간</SearchPageList>
+        {/* <SearchPageList>페이지네이션 공간</SearchPageList> */}
       </SearchModal>
     </SearchWrap>
   );
@@ -88,12 +64,12 @@ const SearchBtn = styled.button`
 
 const SearchList = styled.div`
   background-color: pink;
-  height: 85%;
+  height: 93%;
 `;
 
-const SearchPageList = styled.div`
-  background-color: orange;
-  height: 8%;
-`;
+// const SearchPageList = styled.div`
+//   background-color: orange;
+//   height: 8%;
+// `;
 
 export default SearchContainer;
