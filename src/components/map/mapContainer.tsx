@@ -29,7 +29,6 @@ const MapContainer = () => {
     if (value === '') alert('검색어를 입력해주세요!');
   };
 
-  // 첫 렌더링 시 지도 불러오기
   useEffect(() => {
     const mapContainer = document.getElementById('map');
     const mapOption = {
@@ -38,10 +37,7 @@ const MapContainer = () => {
     };
 
     const map = new kakao.maps.Map(mapContainer, mapOption);
-    setRecentMap(map);
-  }, []);
 
-  useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let markers: any[] = [];
 
@@ -103,7 +99,7 @@ const MapContainer = () => {
       }
 
       if (listEl) listEl.appendChild(fragment);
-      recentMap.setBounds(bounds);
+      map.setBounds(bounds);
     }
 
     function getListItem(index: number, places: placeType) {
@@ -159,7 +155,7 @@ const MapContainer = () => {
         image: markerImage,
       });
 
-      marker.setMap(recentMap);
+      marker.setMap(map);
       markers.push(marker);
 
       return marker;
