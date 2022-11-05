@@ -1,22 +1,17 @@
-import { useState } from 'react';
-// import Modal from '../components/modal/modal';
-// import Portal from '../components/Portal';
+import styled from 'styled-components';
 
-const ModalTest = () => {
-  const [onModal, setOnModal] = useState<boolean>(false);
+import Modal from '../components/modal/modal';
 
+const WritingModal = () => {
   return (
-    <>
-      <button type="button" onClick={() => setOnModal(!onModal)}>
-        눌러보세요
-      </button>
-      {/* {onModal && (
-        <Portal>
-          <Modal>작성모달창</Modal>
-        </Portal>
-      )} */}
-    </>
+    <Modal>
+      <WritingWrap>글 작성 모달창</WritingWrap>
+    </Modal>
   );
 };
 
-export default ModalTest;
+const WritingWrap = styled.div`
+  background-color: pink;
+`;
+
+export default WritingModal;

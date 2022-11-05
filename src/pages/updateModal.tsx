@@ -1,19 +1,7 @@
-import styled from 'styled-components';
-
 import Modal from '../components/modal/modal';
 
 const UpdateModal = () => {
-  return (
-    <Modal>
-      <ModalWrap />
-    </Modal>
-  );
+  return <Modal>글 수정하는 모달창</Modal>;
 };
-
-const ModalWrap = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: pink;
-`;
 
 export default UpdateModal;
