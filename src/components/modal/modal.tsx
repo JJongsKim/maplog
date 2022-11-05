@@ -1,15 +1,19 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../../atoms/modalState';
 
 type childrenType = {
   children: ReactNode;
 };
 
 const Modal = ({ children }: childrenType) => {
+  const [isModal, setIsModal] = useRecoilState(modalState);
+
   return (
     <ModalView>
-      <ModalBg>
-        <ModalContainer>
+      <ModalBg onClick={() => setIsModal(!isModal)}>
+        <ModalContainer onClick={e => e.stopPropagation()}>
           <ModalHeader>
             <p>📝</p>
           </ModalHeader>
@@ -26,32 +30,33 @@ const ModalView = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: 5;
 `;
 
 const ModalBg = styled.div`
-  background-color: #999;
+  background-color: rgba(153, 153, 153, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
-  opacity: 80%;
 `;
 
 const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 740px;
-  height: 680px;
+  width: 720px;
+  height: 660px;
   border-radius: 10px;
+  margin-top: 100px;
   background-color: #fff;
+  z-index: 10;
 `;
 
 const ModalHeader = styled.div`
   width: 100%;
   height: 100px;
-  background-color: orange;
 
   p {
     margin: 20px 0 0 50px;
@@ -60,6 +65,6 @@ const ModalHeader = styled.div`
   }
 `;
 
-const ModalContent = styled.p``;
+const ModalContent = styled.div``;
 
 export default Modal;

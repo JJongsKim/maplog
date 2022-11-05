@@ -5,14 +5,12 @@ import Modal from '../components/modal/modal';
 const UpdateModal = () => {
   return (
     <Modal>
-      <ModalWrap />
+      <WritingWrap>글 수정 모달창</WritingWrap>
     </Modal>
   );
 };
 
-const ModalWrap = styled.div`
-  width: 100%;
-  height: 100%;
+const WritingWrap = styled.div`
   background-color: pink;
 `;
 
