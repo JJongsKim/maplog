@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../../atoms/modalState';
+
+import WritingModal from '../../pages/writingModal';
+import Portal from '../Portal';
 
 const MapContainer = () => {
   const [value, setValue] = useState<string>('');
   const [keyword, setKeyword] = useState<string>('');
   const [placeInfo, setPlaceInfo] = useState<any[]>([]);
+  const [isModal, setIsModal] = useRecoilState(modalState);
 
   const handleKeyword = (e: { preventDefault: () => void; target: { value: string } }) => {
     e.preventDefault();
@@ -138,7 +144,7 @@ const MapContainer = () => {
           <SearchList id="placesList">
             {placeInfo.map(place => (
               <li key={place.id}>
-                <InfoContainer>
+                <InfoContainer onClick={() => setIsModal(!isModal)}>
                   <InfoMarker>☀️</InfoMarker>
                   <InfoContent>
                     <PlaceTitle>{place.place_name}</PlaceTitle>
@@ -150,6 +156,11 @@ const MapContainer = () => {
             ))}
           </SearchList>
           <Pagination>페이지 목록 준비중....</Pagination>
+          {isModal && (
+            <Portal>
+              <WritingModal />
+            </Portal>
+          )}
         </SearchModal>
       </SearchWrap>
     </MapWrap>
@@ -244,7 +255,7 @@ const PlaceTitle = styled.h3`
   margin: 0 0 5px 0;
 `;
 
-const PlaceRoadAddress = styled.p`
+const PlaceRoadAddress = styled.div`
   margin: 0;
   padding: 0;
 `;
