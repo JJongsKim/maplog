@@ -40,7 +40,6 @@ const ModalBg = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  /* opacity: 80%; */
 `;
 
 const ModalContainer = styled.div`
@@ -48,7 +47,7 @@ const ModalContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 720px;
-  height: 650px;
+  height: 660px;
   border-radius: 10px;
   margin-top: 100px;
   background-color: #fff;
@@ -58,7 +57,6 @@ const ModalContainer = styled.div`
 const ModalHeader = styled.div`
   width: 100%;
   height: 100px;
-  background-color: orange;
 
   p {
     margin: 20px 0 0 50px;
