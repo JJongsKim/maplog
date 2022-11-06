@@ -94,12 +94,6 @@ const TitleContainer = styled.div`
     font-weight: 600;
     color: ${({ theme }) => theme.colors.text};
   }
-
-  div {
-    width: 80px;
-    height: 80px;
-    background-color: ${({ theme }) => theme.colors.primary.gray};
-  }
 `;
 
 const TitleInput = styled.input`
