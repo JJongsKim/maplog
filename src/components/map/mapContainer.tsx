@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 import { modalState } from '../../atoms/modalState';
 
 import WritingModal from '../../pages/writingModal';
+// import UpdateModal from '../../pages/updateModal';
 import Portal from '../Portal';
 
 const MapContainer = () => {
@@ -231,6 +232,7 @@ const SearchList = styled.ul`
 const InfoContainer = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const InfoMarker = styled.div`

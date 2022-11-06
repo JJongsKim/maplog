@@ -30,7 +30,6 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/maplog-main" element={<MaplogMain />} />
-          {/* <Route path="/modal-test" element={<ModalTest />} /> */}
           <Route path="/writing-log" element={<WritingLog />} />
         </Routes>
       </Router>
