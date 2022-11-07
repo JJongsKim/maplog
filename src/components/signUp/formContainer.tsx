@@ -1,6 +1,19 @@
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 
 const FormContainer = () => {
+  const sendCodeMessage = () => {
+    toast('인증번호 전송 완료!', { containerId: 'maplogToast' });
+  };
+
+  const confirmCodeMessage = () => {
+    toast('인증이 완료되었어요!', { containerId: 'maplogToast' });
+  };
+
+  const welcomeMessage = () => {
+    toast('maplog와 즐거운 시간 보내세요!', { containerId: 'alertToast' });
+  };
+
   return (
     <form>
       <FormWrap>
@@ -21,16 +34,20 @@ const FormContainer = () => {
             <LabelWrap>이메일</LabelWrap>
             <InputWrap id="userEmail" placeholder="hong123@naver.com" />
           </InputContainer>
-          <CertifyBtn>인증번호 전송</CertifyBtn>
+          <CertifyBtn type="button" onClick={sendCodeMessage}>
+            인증번호 전송
+          </CertifyBtn>
         </CertifyWrap>
         <CertifyWrap>
           <InputContainer>
             <LabelWrap>인증번호 인증</LabelWrap>
             <InputWrap />
           </InputContainer>
-          <CertifyBtn>인증 완료</CertifyBtn>
+          <CertifyBtn type="button" onClick={confirmCodeMessage}>
+            인증 완료
+          </CertifyBtn>
         </CertifyWrap>
-        <SignUpBtn>회원가입</SignUpBtn>
+        <SignUpBtn onClick={welcomeMessage}>회원가입</SignUpBtn>
       </FormWrap>
     </form>
   );

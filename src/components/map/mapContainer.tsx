@@ -1,10 +1,10 @@
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { modalState } from '../../atoms/modalState';
 
 import WritingModal from '../../pages/writingModal';
-// import UpdateModal from '../../pages/updateModal';
 import Portal from '../Portal';
 
 const MapContainer = () => {
@@ -24,8 +24,7 @@ const MapContainer = () => {
   };
 
   const clickSubmit = () => {
-    // eslint-disable-next-line no-alert
-    if (value === '') alert('검색어를 입력해주세요!');
+    if (value === '') toast('검색어를 입력해주세요!', { containerId: 'alertToast' });
   };
 
   useEffect(() => {
@@ -57,8 +56,7 @@ const MapContainer = () => {
         setPlaceInfo(data);
         console.log(data);
       } else if (status === kakao.maps.services.Status.ERROR) {
-        // eslint-disable-next-line no-alert
-        alert('검색 결과 중 오류가 발생했습니다!');
+        toast('검색 결과 중 오류가 발생했어요!', { containerId: 'alertToast' });
       }
     }
 
