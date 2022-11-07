@@ -1,13 +1,13 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 import { theme } from '../styles/theme';
 
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globalStyle.css';
 
 import Main from './main';
 import MaplogMain from './maplog-main';
-// import ModalTest from './modalTest';
 import SignIn from './sign-in';
 import SignUp from './sign-up';
 import WritingLog from './writing-log';
@@ -33,8 +33,51 @@ function App() {
           <Route path="/writing-log" element={<WritingLog />} />
         </Routes>
       </Router>
+      <MaplogToast
+        containerId="maplogToast"
+        limit={1}
+        hideProgressBar
+        closeButton={false}
+        autoClose={2000}
+        enableMultiContainer
+        position="bottom-center"
+      />
+      <AlertToast
+        containerId="alertToast"
+        limit={1}
+        hideProgressBar
+        closeButton={false}
+        autoClose={1500}
+        enableMultiContainer
+        position="top-center"
+      />
     </ThemeProvider>
   );
 }
+
+const MaplogToast = styled(ToastContainer)`
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
+
+  .Toastify__toast {
+    width: 350px;
+    height: 140px;
+    border-radius: 20px;
+    background-color: ${({ theme }) => theme.colors.primary.babypink};
+  }
+`;
+
+const AlertToast = styled(ToastContainer)`
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
+
+  .Toastify__toast {
+    width: 400px;
+    height: 100px;
+    border-radius: 5px;
+  }
+`;
 
 export default App;
