@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import Layout from '../../components/layout';
 
@@ -7,6 +8,10 @@ const MaplogMain = () => {
   const navigate = useNavigate();
   const goWritingLog = () => {
     navigate('/writing-log');
+  };
+
+  const waitMessage = () => {
+    toast('해당 페이지는 아직 준비중이에요!', { containerId: 'alertToast' });
   };
 
   return (
@@ -21,11 +26,11 @@ const MaplogMain = () => {
           <MenuContainer>
             <MenuSet>
               <MenuImage>📂</MenuImage>
-              <MenuBtn>내 로그 모아보기</MenuBtn>
+              <MenuBtn onClick={waitMessage}>내 로그 모아보기</MenuBtn>
             </MenuSet>
             <MenuSet>
               <MenuImage>🗺</MenuImage>
-              <MenuBtn>로그지도 보러가기</MenuBtn>
+              <MenuBtn onClick={waitMessage}>로그지도 보러가기</MenuBtn>
             </MenuSet>
             <MenuSet>
               <MenuImage>📝</MenuImage>
