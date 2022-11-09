@@ -11,6 +11,7 @@ import MaplogMain from './maplog-main';
 import SignIn from './sign-in';
 import SignUp from './sign-up';
 import WritingLog from './writing-log';
+import Logmap from './logmap';
 
 declare global {
   interface Window {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/maplog-main" element={<MaplogMain />} />
           <Route path="/writing-log" element={<WritingLog />} />
+          <Route path="/logmap" element={<Logmap />} />
         </Routes>
       </Router>
       <MaplogToast

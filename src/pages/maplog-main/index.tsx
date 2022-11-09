@@ -10,6 +10,10 @@ const MaplogMain = () => {
     navigate('/writing-log');
   };
 
+  const goLogmap = () => {
+    navigate('/logmap');
+  };
+
   const waitMessage = () => {
     toast('해당 페이지는 아직 준비중이에요!', { containerId: 'alertToast' });
   };
@@ -30,7 +34,7 @@ const MaplogMain = () => {
             </MenuSet>
             <MenuSet>
               <MenuImage>🗺</MenuImage>
-              <MenuBtn onClick={waitMessage}>로그지도 보러가기</MenuBtn>
+              <MenuBtn onClick={goLogmap}>로그지도 보러가기</MenuBtn>
             </MenuSet>
             <MenuSet>
               <MenuImage>📝</MenuImage>
