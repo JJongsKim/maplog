@@ -10,13 +10,17 @@ const MainThird = () => {
     navigate('/sign-up');
   };
 
+  const moveToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <MainWrap>
       <MainContainer>
         <ContentBox>함께하러 갈래요?</ContentBox>
         <GoSignUpBtn onClick={goSignUp}>맵로그 가입하러 가기</GoSignUpBtn>
       </MainContainer>
-      <UpArrowStyle />
+      <UpArrowStyle onClick={moveToTop} />
     </MainWrap>
   );
 };

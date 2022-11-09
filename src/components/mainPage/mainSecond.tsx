@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { ReactComponent as DownArrow } from '../../assets/DownArrow.svg';
 
 const MainSecond = () => {
+  const moveToDown = () => {
+    window.scrollTo({ top: 1964, behavior: 'smooth' });
+  };
+
   return (
     <MainWrap>
       <MainCircle>
@@ -14,7 +18,7 @@ const MainSecond = () => {
           </MainExplation>
         </MainSecondContents>
       </MainCircle>
-      <DownArrowStyle />
+      <DownArrowStyle onClick={moveToDown} />
     </MainWrap>
   );
 };
