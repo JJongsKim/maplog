@@ -1,14 +1,14 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
-import { modalState } from '../../atoms/modalState';
+import { ModalState } from '../../atoms/ModalState';
 
 type childrenType = {
   children: ReactNode;
 };
 
 const Modal = ({ children }: childrenType) => {
-  const [isModal, setIsModal] = useRecoilState(modalState);
+  const [isModal, setIsModal] = useRecoilState(ModalState);
 
   return (
     <ModalView>
