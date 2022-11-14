@@ -52,3 +52,6 @@ hotfix
 | style    | 세미 콜론 수정, 줄바꿈, 스타일 등 기능에 지장 가지 않는 스타일 변경 |
 | setting  | 빌드수행, 패키지 설치, 환경 설정 수정 등                            |
 | docs     | 주석 추가삭제, reademe 작성                                         |
+
+### 💻 MapLog의 백엔드가 궁금하다면?
+<a href="https://github.com/Jeongminyooa/maplog">백엔드로 이동하기</a>
