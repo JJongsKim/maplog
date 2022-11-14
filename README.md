@@ -53,5 +53,6 @@ hotfix
 | setting  | 빌드수행, 패키지 설치, 환경 설정 수정 등                            |
 | docs     | 주석 추가삭제, reademe 작성                                         |
 
+
 ### 💻 MapLog의 백엔드가 궁금하다면?
 <a href="https://github.com/Jeongminyooa/maplog">백엔드로 이동하기</a>
