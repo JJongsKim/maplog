@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { ModalState } from '../../atoms/ModalState';
 
@@ -8,8 +8,19 @@ import Portal from '../Portal';
 
 import { logDemoData } from './logDemoData';
 
+type modalContentType = {
+  latlng: any;
+  log: {
+    title: string;
+    logDate: string;
+    mood: string;
+    logContent: string;
+  };
+};
+
 const logmapContainer = () => {
   const [isModal, setIsModal] = useRecoilState(ModalState);
+  const [modalContent, setModalContent] = useState<modalContentType | null>(null);
 
   useEffect(() => {
     const mapContainer = document.getElementById('map');
@@ -37,6 +48,8 @@ const logmapContainer = () => {
       });
 
       kakao.maps.event.addListener(marker, 'click', function () {
+        const contentArray = logDemoData[i];
+        setModalContent(contentArray);
         setIsModal(!isModal);
       });
     }
@@ -46,7 +59,7 @@ const logmapContainer = () => {
     <MapWrap id="map">
       {isModal && (
         <Portal>
-          <UpdateModal />
+          <UpdateModal {...modalContent} />
         </Portal>
       )}
     </MapWrap>

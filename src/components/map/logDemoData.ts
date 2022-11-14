@@ -4,6 +4,7 @@ export const logDemoData = [
     log: {
       title: '중화역 짱맛탱 스시집',
       logDate: '2022-11-09',
+      mood: '😆 HAPPY',
       logContent: '아 여기 쮸니랑 줄 서서 먹었는데 진짜 맛있었음',
     },
   },
@@ -12,6 +13,7 @@ export const logDemoData = [
     log: {
       title: '맨날 카공하는 곳',
       logDate: '2022-11-09',
+      mood: '😆 HAPPY',
       logContent: '쮸니랑 성신에서 카공할 때 마다 오는 탐탐스~',
     },
   },

@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import Modal from '../components/modal/modal';
 
-const UpdateModal = () => {
+const UpdateModal = (props: any) => {
+  const propsLog = props;
+
   return (
     <Modal>
       <WritingWrap>
@@ -12,18 +14,18 @@ const UpdateModal = () => {
         </BtnContainer>
         <TitleContainer>
           <p>제목</p>
-          <TitleBox />
+          <TitleBox>{propsLog.log.title}</TitleBox>
         </TitleContainer>
         <DateMood>
           <DateSelect>
             <p>날짜</p>
-            <DateBox />
+            <DateBox>{propsLog.log.logDate}</DateBox>
           </DateSelect>
-          <MoodSelect />
+          <MoodBox>{propsLog.log.mood}</MoodBox>
         </DateMood>
         <LogContent>
           <p>내용</p>
-          <LogBox />
+          <LogBox>{propsLog.log.logContent}</LogBox>
         </LogContent>
         <ImgContainer>
           <p>이미지</p>
@@ -63,7 +65,7 @@ const TitleBox = styled.div`
   width: 450px;
   height: 45px;
   margin-left: 35px;
-  padding: 0 20px;
+  padding: 10px 20px;
   border: 1px solid ${({ theme }) => theme.colors.primary.gray};
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
@@ -97,7 +99,7 @@ const DateBox = styled.div`
   width: 260px;
   height: 45px;
   margin-left: 35px;
-  padding: 0 20px;
+  padding: 10px 20px;
   border: 1px solid ${({ theme }) => theme.colors.primary.gray};
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
@@ -106,8 +108,8 @@ const DateBox = styled.div`
   color: ${({ theme }) => theme.colors.text};
 `;
 
-const MoodSelect = styled.div`
-  padding-left: 15px;
+const MoodBox = styled.div`
+  padding: 8px 20px;
   width: 140px;
   height: 45px;
   border: 1px solid ${({ theme }) => theme.colors.primary.gray};
@@ -136,6 +138,7 @@ const LogBox = styled.div`
   width: 450px;
   height: 230px;
   margin-left: 35px;
+  padding: 10px;
   border: 1px solid ${({ theme }) => theme.colors.primary.gray};
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
