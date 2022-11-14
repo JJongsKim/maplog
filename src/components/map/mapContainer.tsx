@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { modalState } from '../../atoms/modalState';
+import { ModalState } from '../../atoms/ModalState';
 
 import WritingModal from '../../pages/writingModal';
 import Portal from '../Portal';
@@ -11,7 +11,7 @@ const MapContainer = () => {
   const [value, setValue] = useState<string>('');
   const [keyword, setKeyword] = useState<string>('');
   const [placeInfo, setPlaceInfo] = useState<any[]>([]);
-  const [isModal, setIsModal] = useRecoilState(modalState);
+  const [isModal, setIsModal] = useRecoilState(ModalState);
 
   const handleKeyword = (e: { preventDefault: () => void; target: { value: string } }) => {
     e.preventDefault();
@@ -25,6 +25,13 @@ const MapContainer = () => {
 
   const clickSubmit = () => {
     if (value === '') toast('검색어를 입력해주세요!', { containerId: 'alertToast' });
+  };
+
+  // 모달을 여는 동시에 클릭한 위치의 place.x, place.y 값을 받아옴
+  const clickPlaceInfo = (place: any) => {
+    console.log(place.x);
+    console.log(place.y);
+    setIsModal(!isModal);
   };
 
   useEffect(() => {
@@ -54,7 +61,6 @@ const MapContainer = () => {
       if (status === kakao.maps.services.Status.OK) {
         displayPlaces(data);
         setPlaceInfo(data);
-        console.log(data);
       } else if (status === kakao.maps.services.Status.ERROR) {
         toast('검색 결과 중 오류가 발생했어요!', { containerId: 'alertToast' });
       }
@@ -143,7 +149,7 @@ const MapContainer = () => {
           <SearchList id="placesList">
             {placeInfo.map(place => (
               <li key={place.id}>
-                <InfoContainer onClick={() => setIsModal(!isModal)}>
+                <InfoContainer onClick={() => clickPlaceInfo(place)}>
                   <InfoMarker>☀️</InfoMarker>
                   <InfoContent>
                     <PlaceTitle>{place.place_name}</PlaceTitle>
