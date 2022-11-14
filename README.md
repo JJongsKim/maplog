@@ -10,6 +10,38 @@ yarn install
 yarn start
 ```
 
+### 🛠 tech stack
+```
+주요 개발 언어 및 프레임워크
+- React.js TypeScript
+
+상태 관리
+- Recoil
+
+페이지 스타일링
+- Styled-components
+
+배포 및 CDN
+
+etc
+- kakaomap, axios ...
+```
+
+### 🍊 Git branch & Git Flow
+```
+main
+
+develop (default)
+
+feature
+
+styling
+
+release: 배포 준비
+
+hotfix
+```
+
 ### commit message
 
 | 헤더     | 내용                                                                |
